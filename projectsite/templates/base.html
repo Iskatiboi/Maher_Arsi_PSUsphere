@@ -9,13 +9,32 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 	<link rel="stylesheet" href="{% static 'css/ready.css' %}">
     <link rel="stylesheet" href="{%static 'css/demo.css' %}">
-</head>
+	<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css">
+
+</head> 
 <body>
+
+	<style>
+.la, 
+[class^="la-"], 
+[class*=" la-"] {
+    font-family: 'Line Awesome Free', 'Line Awesome', 'FontAwesome' !important;
+    font-style: normal !important;
+    font-weight: 900 !important;
+    text-rendering: auto;
+    line-height: 1;
+    display: inline-block !important;
+    font-size: 2rem !important;
+    color: #1a1212 !important; 
+}
+</style>
+
 	<div class="wrapper">
 		<div class="main-header">
 			<div class="logo-header">
 				<a href="index.html" class="logo">
-					Ready Dashboard
+					PalSU ACS Dashboard
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
