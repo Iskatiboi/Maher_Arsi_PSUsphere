@@ -16,6 +16,8 @@ class HomePageView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["total_students"] = Student.objects.count()
+        context["total_organizations"] = Student.objects.count()
+        context["total_programs"] = Student.objects.count()
 
         today = timezone.now().date()
         count = (
@@ -50,11 +52,11 @@ class OrganizationList(ListView):
         return qs
 
 
-class OrganizationList(ListView):
+''' class OrganizationList(ListView):
     model = Organization
     context_object_name = "organization"
     template_name = "org_list.html"
-    paginate_by = 5
+    paginate_by = 5 '''
 
 
 class OrganizationCreateView(CreateView):
@@ -81,6 +83,25 @@ class OrgMemberList(ListView):
     context_object_name = 'org_member'
     template_name = 'org_member_list.html'
     paginate_by = 5
+    ordering = ["student","date_joined"]
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(student__lastname__icontains=query) |
+                Q(student__firstname__icontains=query)
+                )
+        return qs
+    
+    def get_ordering(self):
+        allowed = ["student", "-date_joined"]
+        sort_by = self.request.GET.get("sort_by")
+        if sort_by in allowed:
+            return sort_by
+        return "-date_joined"
 
 
 class OrgMemberCreateView(CreateView):
@@ -108,6 +129,17 @@ class StudentList(ListView):
     template_name = "student_list.html"
     paginate_by = 5
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(lastname__icontains=query) |
+                Q(firstname__icontains=query)
+                )
+        return qs
+
 
 class StudentCreateView(CreateView):
     model = Student
@@ -133,6 +165,14 @@ class CollegeList(ListView):
     context_object_name = "college"
     template_name = "college_list.html"
     paginate_by = 5
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(college_name__icontains=query)
+        return qs
 
 
 class CollegeCreateView(CreateView):
@@ -161,6 +201,17 @@ class ProgramList(ListView):
     context_object_name = "program"
     template_name = "program_list.html"
     paginate_by = 5
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        query = self.request.GET.get('q')
+
+        if query:
+            qs = qs.filter(
+                Q(prog_name__icontains=query) |
+                Q(college__college_name__icontains=query)
+                )
+        return qs
 
     def get_ordering(self):
         allowed = ["prog_name", "college__college_name"]
