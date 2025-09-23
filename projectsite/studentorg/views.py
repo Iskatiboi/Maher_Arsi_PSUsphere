@@ -6,7 +6,11 @@ from studentorg.forms import OrganizationForm, OrgMemberForm, StudentForm, Colle
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.utils import timezone
+from allauth.account.views import LoginView
 
+
+class CustomLoginView(LoginView):
+    redirect_authenticated_user = False  
 
 class HomePageView(ListView):
     model = Organization
