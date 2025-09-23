@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from studentorg import views
 from studentorg.views import     HomePageView, OrganizationList, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView,OrgMemberList, OrgMemberCreateView, OrgMemberUpdateView, OrgMemberDeleteView, StudentList, StudentCreateView, StudentUpdateView, StudentDeleteView, CollegeList, CollegeCreateView, CollegeUpdateView, CollegeDeleteView, ProgramList, ProgramCreateView, ProgramUpdateView, ProgramDeleteView
 
@@ -7,6 +7,7 @@ from studentorg.views import     HomePageView, OrganizationList, OrganizationCre
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")), # allauth routes
     path("", views.HomePageView.as_view(), name="home"),
     path("organization_list/", OrganizationList.as_view(), name="organization-list"),
     path("organization_list/add/", OrganizationCreateView.as_view(), name="organization-add"),

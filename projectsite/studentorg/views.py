@@ -158,13 +158,14 @@ class CollegeDeleteView(DeleteView):
 
 class ProgramList(ListView):
     model = Program
-    context_object_name = "program"
+    context_object_name = "Program"
     template_name = "program_list.html"
     paginate_by = 5
-
+    
     def get_ordering(self):
+        
         allowed = ["prog_name", "college__college_name"]
-        sort_by = self.request.GET.get("sort_by")  # read ?sort_by=...
+        sort_by = self.request.GET.get("sort_by")
         if sort_by in allowed:
             return sort_by
         return "prog_name"
