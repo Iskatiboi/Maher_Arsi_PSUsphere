@@ -198,9 +198,12 @@ class CollegeDeleteView(DeleteView):
 
 class ProgramList(ListView):
     model = Program
-    context_object_name = "program"
+    context_object_name = "Program"
     template_name = "program_list.html"
     paginate_by = 5
+<<<<<<< HEAD
+    
+=======
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -213,9 +216,11 @@ class ProgramList(ListView):
                 )
         return qs
 
+>>>>>>> e29b790ccc6d7d0e8795b6873ca105e30bff5d4d
     def get_ordering(self):
+        
         allowed = ["prog_name", "college__college_name"]
-        sort_by = self.request.GET.get("sort_by")  # read ?sort_by=...
+        sort_by = self.request.GET.get("sort_by")
         if sort_by in allowed:
             return sort_by
         return "prog_name"
