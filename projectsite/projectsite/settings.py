@@ -159,8 +159,8 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/' # where to redirect after logout
 ACCOUNT_LOGOUT_ON_GET = True # logout immediately on GET
 ACCOUNT_LOGIN_METHODS = {"username", "email"} # allow login with username OR email
 ACCOUNT_SIGNUP_FIELDS = [
-"username*",
-"email*",
-"password1*",
-"password2*",
+    "username*",
+    "email*",
+    "password1*",
+    "password2*",
 ]
