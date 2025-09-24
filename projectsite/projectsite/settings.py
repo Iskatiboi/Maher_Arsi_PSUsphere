@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+from socket import socket
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-^lq_9=j0)xvc65974g7l_iu)gdz0e(l5hm_6^i&(2#w9uoc2o-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','scottmaher.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'scottmaher.pythonanywhere.com']
 
 
 # Application definition
@@ -49,7 +51,8 @@ INSTALLED_APPS = [
     
 ]
 
-SITE_ID = 3
+SITE_ID = 3 
+
 AUTHENTICATION_BACKENDS = [
 'django.contrib.auth.backends.ModelBackend',
 'allauth.account.auth_backends.AuthenticationBackend',
