@@ -123,13 +123,13 @@
 							</ul>
 						</li>
 						<li class="nav-item dropdown">
-							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="{% static 'img/newprofile3.jpg' %}" alt="user-img" width="36" class="img-circle"><span >L.S Inc.</span></span> </a>
+							<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="{% static 'img/newprofile3.jpg' %}" alt="user-img" width="36" class="img-circle"><span>{{ request.user.username }}</span> </a>
 							<ul class="dropdown-menu dropdown-user">
 								<li>
 									<div class="user-box">
 										<div class="u-img"><img src="{% static 'img/newprofile.jpg' %}" alt="user"></div>
 										<div class="u-text">
-											<h4>LuvScott Inc.</h4>
+											<h4>{{ request.user.username }}</h4>
 											<p class="text-muted">luvscott@gmail.com.com</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
 										</div>
 									</li>
@@ -157,7 +157,7 @@
 						<div class="info">
 							<a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
 								<span>
-									Luvna and Scott Inc.
+								 	{{ request.user.username }}
 									<span class="user-level">Administrators</span>
 									<span class="caret"></span>
 								</span>
