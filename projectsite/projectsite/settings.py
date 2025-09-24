@@ -51,7 +51,11 @@ INSTALLED_APPS = [
     
 ]
 
-SITE_ID = 3 
+if "pythonanywhere" in socket.gethostname():
+    SITE_ID = 5 # production site (psusphere.pythonanywhere.com)
+else:
+    SITE_ID = 3 # local site (127.0.0.1:8000)
+
 
 AUTHENTICATION_BACKENDS = [
 'django.contrib.auth.backends.ModelBackend',
